@@ -48,9 +48,9 @@ auth.define_tables()
 
 ## configure email
 mail=auth.settings.mailer
-mail.settings.server = 'logging' or 'smtp.gmail.com:587'
-mail.settings.sender = 'you@gmail.com'
-mail.settings.login = 'username:password'
+mail.settings.server = 'smtp.webfaction.com:25'
+mail.settings.sender = 'robot@varpub.org'      
+mail.settings.login = 'danto:d095af99'
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
