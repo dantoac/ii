@@ -25,7 +25,7 @@ def index():
                SPAN(d.paciente.peso,'kg, ',edad,' años', _class='label')
                ),
             TD(d.medicamento.nombre),
-            TD(d.cantidad,d.metrica,' × ',d.horas,'hr × ',d.dias,' días'),
+            TD(d.cantidad,d.metrica,' cada ',d.horas,'hr por ',d.dias,' días'),
             TD(d.comienza),
             TD(d.detalle or EM('Sin detalle')),
             TD(A('Modificar',
