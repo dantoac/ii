@@ -1,7 +1,7 @@
-databases/*.*
-sessions/*.*
-cache/*.*
-errors/*.*
+databases/*
+sessions/*
+cache/*
+errors/*
 #*
 ~*
 *.bak
