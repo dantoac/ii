@@ -13,8 +13,8 @@ db.define_table("medicamento",
 
 db.define_table("paciente",
     Field("nombre"),
-    Field("apellido_p"),
-    Field("apellido_m"),
+    Field("apellido_p", label = 'Apellido Paterno'),
+    Field("apellido_m", label = 'Apellido Materno'),
     Field("peso","double", comment = "en Kilogramos"),
     Field("fecha_nacimiento","date"),
     Field("nombre_completo", compute=lambda p: '%s %s %s' \
