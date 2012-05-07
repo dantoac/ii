@@ -46,8 +46,8 @@ def menuser():
 
     if auth.is_logged_in():
         menuser_item = CAT(
-            LI(A(auth.user.last_name.capitalize(),' ',
-                          auth.user.first_name.capitalize(), 
+            LI(A(auth.user.first_name.capitalize(),' ',
+                 auth.user.last_name.capitalize(),
                           _class="noprint brand")),
             LI(A(T('Salir'), _class="noprint", _title=T('Salir del Sistema'), _href=URL('default','user',args='logout',vars=nextgo(c='ads',f='index')))),
             LI(A(T('Mis Datos'), _class="noprint", _title='Cambiar Nombre, E-Mail o Contraseña de Supervisión', _href=URL('default','user',args='profile',vars=nextgo()))),
