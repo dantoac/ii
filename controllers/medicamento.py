@@ -23,7 +23,7 @@ def index():
                        _href = URL('dosis', 'nueva', vars = {
                        'medicamento' : m.id,
                        'paciente' : request.vars.paciente
-                       }), _class = 'btn btn-primary'
+                       }), _class = 'btn btn-mini btn-primary'
                        )
         else:
             dosificando = ''        
