@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  
+  <!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="{{=URL('static','favicon.ico')}}" type="image/x-icon">
+  <link rel="apple-touch-icon" href="{{=URL('static','favicon.png')}}">
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables 
+	   HTML5 elements & feature detects -->
+  <script src="{{=URL('static','js/modernizr.custom.js')}}"></script>  
+
+  <!-- include stylesheets -->
+  {{
+    response.files.append(URL('static','css/bootstrap.css'))
+    response.files.append(URL('static','js/bootstrap.min.js'))
+
+  if response.menu:
+     response.files.append(URL('static','css/superfish.css'))
+     response.files.append(URL('static','js/superfish.js'))
+  pass
+  }}
+
+  {{include 'web2py_ajax.html'}}
+
+  {{if response.menu:}}
+  <script type="text/javascript">
+    jQuery(function(){ jQuery('ul.sf-menu').supersubs({minWidth:12,maxWidth:30,extraWidth:3}).superfish(); });
+  </script>
+  {{pass}}
+
+  {{
+  # using sidebars need to know what sidebar you want to use
+  left_sidebar_enabled = globals().get('left_sidebar_enabled',False)
+  right_sidebar_enabled = globals().get('right_sidebar_enabled',False)
+  middle_columns = {0:'sixteen',1:'twelve',2:'eight'}[
+     (left_sidebar_enabled and 1 or 0)+(right_sidebar_enabled and 1 or 0)]
+  }}
+
+  <!-- uncomment here to load jquery-ui -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+  
+
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css" />
+
+<style>
+.flash {
+    background:#cfc;
+    padding:0 1em;
+    font:bold 1.5em sans-serif;
+    }
+</style>
+
+</head>
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+<a href="#" class="brand">{{=request.application}}</a>
+             {{is_mobile=request.user_agent().is_mobile}}
+             {{if response.menu:}}
+                <div id="menu">
+                {{=MENU(response.menu, _class='mobile-menu' if is_mobile else 'sf-menu nav',mobile=is_mobile)}}
+                </div>
+            {{pass}}
+                <div class="pull-right">
+                {{=menuser()}}
+                </div>
+     
+            </div>
+        </div>
+    </div>
+
+ 
+ <div class="flash pull-left">{{=response.flash or ''}}</div>
+
+<div class="container well">
+{{include}}
+</div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+    $('table').dataTable({
+    "oLanguage": {
+            "sProcessing":   "Procesando...",
+            "sLengthMenu":   "Mostrar _MENU_ registros",
+            "sZeroRecords":  "No se encontraron resultados",
+            "sInfo":         "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+            "sInfoEmpty":    "Mostrando desde 0 hasta 0 de 0 registros",
+            "sInfoFiltered": "(filtrado de _MAX_ registros en total)",
+            "sInfoPostFix":  "",
+            "sSearch":       "Buscar:",
+            "sUrl":          "",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sPrevious": "Anterior",
+                "sNext":     "Siguiente",
+                "sLast":     "Último"
+            }
+        }
+    });
+});
+</script>
+
+
+</body>
+</html>

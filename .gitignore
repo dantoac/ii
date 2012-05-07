@@ -1,0 +1,9 @@
+databases/*.*
+session/*.*
+cache/*.*
+errors/*.*
+#*
+~*
+*.bak
+*.pyc
+!.gitignore
