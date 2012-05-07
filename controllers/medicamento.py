@@ -41,7 +41,8 @@ def index():
 @auth.requires_login()
 def nuevo():
     response.view = 'paciente/nuevo.html'
-    form = SQLFORM(db.medicamento, request.args(0))
+    form = SQLFORM(db.medicamento, request.args(0),
+                   submit_button = 'Registar Medicamento')
     
     if form.process().accepted:
         if request.args:

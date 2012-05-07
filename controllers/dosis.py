@@ -53,7 +53,8 @@ def nueva():
     db.dosis.medicamento.default = medicamento.id
     db.dosis.medicamento.writable = False
     
-    form = SQLFORM(db.dosis, request.args(0))
+    form = SQLFORM(db.dosis, request.args(0),
+                   submit_button = 'Registrar Dosis')
 
     if form.process().accepted:
         if request.args:

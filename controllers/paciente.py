@@ -36,7 +36,8 @@ def index():
 @auth.requires_login()
 def nuevo():
     
-    form = SQLFORM(db.paciente, request.args(0))
+    form = SQLFORM(db.paciente, request.args(0),
+                   submit_button = 'Agregar Paciente')
     
     if form.process().accepted:
         if request.args:

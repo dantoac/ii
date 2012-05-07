@@ -4,9 +4,9 @@ unidades_de_medida = ["unid.","ml"]
 
 db.define_table("medicamento",
     Field("nombre",requires=IS_UPPER()),
-    Field("para", "list:string"),
+    Field("para", "list:string", comment = '¿Para qué sirve este medicamento? Escribe 1 síntoma por línea.'),
     Field("metrica", requires=IS_IN_SET(unidades_de_medida)),
-    Field("cantidad","double", comment = "cantidad según kg de masa"),    
+    Field("cantidad","double", comment = "cantidad según kilogramo de masa"),    
     Field("info_extra", "text"),
     format = "%(nombre)s"
     )
