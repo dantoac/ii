@@ -58,12 +58,8 @@ def menuser():
         menuser_item = LI(A(T('Identificarse'),  _class="noprint", _href=URL('default','user',args='login')))
         if not 'register' in auth.settings.actions_disabled:
             menuser_item.append(LI(A(T('Registrarse'),  _class="noprint", _href=URL('default','user',args='register'))))
-        menuser_item.append(LI(A(T('¿Contraseña Perdida?'), _class="noprint",  _href=URL('default','user',args='request_reset_password'))))
-            
-        
+        menuser_item.append(LI(A(T('¿Contraseña Perdida?'), _class="noprint",  _href=URL('default','user',args='request_reset_password'))))        
  
     menuser = UL(menuser_item, _class='nav pull-right')
-        
-    #ulink = ' | '.join([i.xml() for i in menuser_item])
         
     return menuser
