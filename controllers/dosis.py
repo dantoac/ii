@@ -40,14 +40,16 @@ def index():
 def nueva():
     paciente = db.paciente(request.vars.paciente) or redirect(URL(f='index', args='paciente_desconocido'))
     medicamento = db.medicamento(request.vars.medicamento) or redirect(URL(f='index',args='medicamento_desconocido'))
+
+    peso = paciente.peso
+    cantidad = medicamento.cantidad
     
-    cantidad = paciente.peso * medicamento.cantidad
+    dosis = peso * cantidad
     metrica = medicamento.metrica
-    
-    db.dosis.cantidad.default = cantidad
-    #db.dosis.cantidad.writable = False
+
+    db.dosis.cantidad.comment = "%s %s × %s" % (peso,metrica,cantidad)
+    db.dosis.cantidad.default = dosis
     db.dosis.metrica.default = metrica
-    #db.dosis.metrica.writable = False
     db.dosis.paciente.default = paciente.id
     db.dosis.paciente.writable = False
     db.dosis.medicamento.default = medicamento.id
