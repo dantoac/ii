@@ -6,7 +6,7 @@ def index():
     if request.vars.paciente:
         paciente = db.paciente(request.vars.paciente)
         if paciente:
-            response.title = 'Medicandoa a: ',paciente.nombre_completo
+            response.title = 'Medicando a: ',paciente.nombre_completo
     
     data = db(db.medicamento).select()
     
