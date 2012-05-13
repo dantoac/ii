@@ -47,7 +47,7 @@ def nueva():
     dosis = peso * cantidad
     metrica = medicamento.metrica
 
-    db.dosis.cantidad.comment = "%s %s × %s" % (peso,metrica,cantidad)
+    db.dosis.cantidad.comment = "%s Kg × %s %s" % (peso,cantidad,metrica)
     db.dosis.cantidad.default = dosis
     db.dosis.metrica.default = metrica
     db.dosis.paciente.default = paciente.id
